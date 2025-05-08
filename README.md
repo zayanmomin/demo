@@ -15,10 +15,6 @@ A Django REST Framework application for managing a digital library, including bo
 ### Local Development
 
 1. Clone the repository
-```bash
-git clone <repository-url>
-cd AIEMS
-```
 
 2. Create and activate a virtual environment
 ```bash
