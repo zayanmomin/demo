@@ -47,18 +47,16 @@ class Review(models.Model):
     reviewer = models.ForeignKey(Reviewer, on_delete=models.SET_NULL, null=True, related_name='reviews')
 
     def save(self, *args, **kwargs):
-        if not self.pk:
-            # Create a new reviewer instance for each review in anonymous system
-            reviewer = Reviewer.objects.create(
-                name=self.reviewer_name
-            )
+        is_new = not self.pk
+        
+        if is_new:
+            reviewer = Reviewer.objects.create(name=self.reviewer_name)
             self.reviewer = reviewer
             
-            # Handle 5-star reviews directly in save method
-            if self.rating == 5:
-                self.book.favorite_reviewers.add(reviewer)
-        
         super().save(*args, **kwargs)
+        
+        if is_new and self.rating == 5:
+            self.book.favorite_reviewers.add(self.reviewer)
 
 
     def __str__(self):
