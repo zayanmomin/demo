@@ -71,3 +71,12 @@ Root/
 └── requirements.txt     # Python dependencies
 ```
 
+## Design Choices
+
+### Signal-Based Rating Updates
+
+Django signals were used for book rating calculations to maintain clean separation of concerns (and keeping the model's save method clean for other purposes) while ensuring automatic updates. This approach offloads database aggregation operations from the request-response cycle, leveraging Django's built-in database functions (Avg, Round) to perform calculations at the DB level for optimal performance.
+
+### Reviewer Model Relationship
+
+The Review model maintains both a `reviewer_name` field for user-facing display and a proper `reviewer` foreign key relationship to the Reviewer model. This design enables anonymous reviews while still facilitating features like tracking favorite reviewers who left 5-star ratings (for better relational integrity).
