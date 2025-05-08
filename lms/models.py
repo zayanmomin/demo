@@ -1,4 +1,8 @@
 from django.db import models
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
+from django.db.models import Avg
+from django.db.models.functions import Round
 
 
 class Author(models.Model):
@@ -63,16 +67,16 @@ class Review(models.Model):
         return f'Review of {self.book.title} by {self.reviewer_name}'
 
 
-
-# @receiver(post_save, sender=Review)
-# def add_favorite_reviewer(sender, instance, created, **kwargs):
-#     """
-#     Signal handler to automatically add a reviewer to book.favorite_reviewers
-#     when they submit a 5-star review
-#     """
-#     if created and instance.rating == 5:
-#         # Get or create the reviewer
-#         reviewer, _ = Reviewer.objects.get_or_create(name=instance.reviewer_name)
-        
-#         # Add to favorite reviewers
-#         instance.book.favorite_reviewers.add(reviewer)
+@receiver([post_save, post_delete], sender=Review)
+def update_book_rating(sender, instance, **kwargs):
+    """Update book rating whenever reviews change"""
+    book = instance.book
+    
+    # Use database aggregation
+    avg_rating = book.reviews.aggregate(avg=Round(Avg('rating'), 1))['avg'] or 0.0
+    
+    # Update without triggering additional saves
+    Book.objects.filter(pk=book.pk).update(
+        average_rating=avg_rating,
+        is_poorly_rated=avg_rating < 2.0
+    )
