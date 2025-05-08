@@ -1,0 +1,3103 @@
+{
+	"info": {
+		"_postman_id": "928d978f-2cfb-40ca-8f4a-be9071b7bdc2",
+		"name": "AIEMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30333713",
+		"_collection_link": "https://lunar-equinox-592923.postman.co/workspace/40455697-8519-4435-9445-61f1deca5c3b/collection/30333713-928d978f-2cfb-40ca-8f4a-be9071b7bdc2?action=share&source=collection_link&creator=30333713"
+	},
+	"item": [
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Create an Author",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test User 3",
+									"type": "text"
+								},
+								{
+									"key": "birth_date",
+									"value": "2025-05-02",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/authors/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"authors",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create An Author",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Test User",
+											"type": "text"
+										},
+										{
+											"key": "birth_date",
+											"value": "2025-05-01",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/authors/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"authors",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 10:05:34 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Test User\",\n    \"birth_date\": \"2025-05-01\"\n}"
+						},
+						{
+							"name": "Testing with Future Date for Birth Date",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Test User",
+											"type": "text"
+										},
+										{
+											"key": "birth_date",
+											"value": "2025-05-11",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/authors/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"authors",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 10:06:06 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": [\n        \"author with this name already exists.\"\n    ]\n}"
+						},
+						{
+							"name": "Testing Duplicate Name",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Test User",
+											"type": "text"
+										},
+										{
+											"key": "birth_date",
+											"value": "2025-05-02",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/authors/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"authors",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 10:06:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": [\n        \"author with this name already exists.\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Authors",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/authors/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"authors",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Authors",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/authors/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"authors",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 10:09:13 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "223"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Test User\",\n        \"birth_date\": \"2025-05-01\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Test User 1\",\n        \"birth_date\": \"2025-05-02\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Test User 2\",\n        \"birth_date\": \"2025-05-02\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Test User 3\",\n        \"birth_date\": \"2025-05-02\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Author by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/authors/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"authors",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Author by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/authors/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"authors",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 10:10:49 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "55"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"Test User 1\",\n    \"birth_date\": \"2025-05-02\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update an Author",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Updated Name",
+									"type": "text"
+								},
+								{
+									"key": "birth_date",
+									"value": "2024-12-12",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/authors/2/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"authors",
+								"2",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update an Author",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Updated Name",
+											"type": "text"
+										},
+										{
+											"key": "birth_date",
+											"value": "2024-12-12",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/authors/2/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"authors",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 10:16:13 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"Updated Name\",\n    \"birth_date\": \"2024-12-12\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Partially Update an Author",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Partially Updating Author",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/authors/2/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"authors",
+								"2",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Partially Updating Author",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Partially Updating Author",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/authors/2/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"authors",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 10:18:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"Partially Updating Author\",\n    \"birth_date\": \"2024-12-12\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Deleting an Author",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/authors/2/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"authors",
+								"2",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Deleting an Author",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/authors/2/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"authors",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 10:21:36 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "### Creating an Author\n\n<img src=\"https://content.pstmn.io/43e26ac6-7530-4a06-b424-27e850043e25/aW1hZ2UucG5n\" width=\"1431\" height=\"708\">\n\n### Testing Future Date for Birth Date\n\n<img src=\"https://content.pstmn.io/e810d33a-8af6-445d-a485-c8c987e608f9/aW1hZ2UucG5n\" width=\"1432\" height=\"688\">\n\n### Get All Authors\n\n<img src=\"https://content.pstmn.io/f5dc3c17-e889-4b15-88ad-cd69650e3abe/aW1hZ2UucG5n\" width=\"1437\" height=\"856\">\n\n### Get an Author by ID\n\n<img src=\"https://content.pstmn.io/08ff6b4a-8327-40bf-aca3-250088971a82/aW1hZ2UucG5n\" width=\"1439\" height=\"606\">\n\n### Update an Author\n\n<img src=\"https://content.pstmn.io/11c83520-e92b-4274-9ab2-4938a9ac2051/aW1hZ2UucG5n\" width=\"1391\" height=\"581\">\n\n### Partially Updating an Author\n\n<img src=\"https://content.pstmn.io/997d3c32-dae8-4547-a5a7-abb2a73dee8a/aW1hZ2UucG5n\" width=\"1396\" height=\"591\">\n\n### Deleting an Author\n\n<img src=\"https://content.pstmn.io/0accf6bc-fc97-4af3-9950-319bb17a7955/aW1hZ2UucG5n\" width=\"1395\" height=\"545\">"
+		},
+		{
+			"name": "Publishers",
+			"item": [
+				{
+					"name": "Create a Publisher",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "The Publishing House 4",
+									"type": "text"
+								},
+								{
+									"key": "website",
+									"value": "https://www.example4.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/publishers/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publishers",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create a Publisher",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "The Publishing House",
+											"type": "text"
+										},
+										{
+											"key": "website",
+											"value": "https://www.example.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/publishers/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"publishers",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 11:50:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"The Publishing House\",\n    \"website\": \"https://www.example.com\"\n}"
+						},
+						{
+							"name": "Unique Publisher Name Constraint",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "The Publishing House",
+											"type": "text"
+										},
+										{
+											"key": "website",
+											"value": "https://www.example.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/publishers/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"publishers",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 11:51:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": [\n        \"publisher with this name already exists.\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Publishers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/publishers/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publishers",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Publishers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/publishers/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"publishers",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 11:54:04 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "309"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"The Publishing House\",\n        \"website\": \"https://www.example.com\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"The Publishing House 2\",\n        \"website\": \"https://www.example.com\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"The Publishing House 3\",\n        \"website\": \"https://www.example3.com\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"The Publishing House 4\",\n        \"website\": \"https://www.example4.com\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get a Publisher by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/publishers/4/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publishers",
+								"4",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Publisher by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/publishers/4/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"publishers",
+										"4",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 11:55:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"name\": \"The Publishing House 4\",\n    \"website\": \"https://www.example4.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a Publisher",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Edited Publisher Name",
+									"type": "text"
+								},
+								{
+									"key": "website",
+									"value": "https://edited.website.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/publishers/4/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publishers",
+								"4",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a Publisher",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Edited Publisher Name",
+											"type": "text"
+										},
+										{
+											"key": "website",
+											"value": "https://edited.website.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/publishers/4/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"publishers",
+										"4",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 12:03:50 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"name\": \"Edited Publisher Name\",\n    \"website\": \"https://edited.website.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Partially Update a Publisher",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Partial Updated Name",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/publishers/4/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publishers",
+								"4",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Partial Update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Partial Updated Name",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/publishers/4/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"publishers",
+										"4",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 12:10:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"name\": \"Partial Updated Name\",\n    \"website\": \"https://edited.website.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Publisher",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/publishers/4/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"publishers",
+								"4",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Publisher",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/publishers/4/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"publishers",
+										"4",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 12:19:20 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "### Create a Publisher\n\n<img src=\"https://content.pstmn.io/6f54efc2-faaa-4a8d-837e-d9a538c0b2d5/aW1hZ2UucG5n\" width=\"1370\" height=\"603\">\n\n### Get Publishers\n\n<img src=\"https://content.pstmn.io/95793735-ab54-49a7-a55f-a52fd98769b2/aW1hZ2UucG5n\" width=\"1371\" height=\"871\">\n\n### Get Publisher by ID\n\n<img src=\"https://content.pstmn.io/c3c5d304-4696-4e29-95ad-9891cb97b41e/aW1hZ2UucG5n\" width=\"1362\" height=\"613\">\n\n### Update a Publisher\n\n<img src=\"https://content.pstmn.io/9fff9f48-4c26-4884-89e7-d85f9c83f798/aW1hZ2UucG5n\" width=\"1372\" height=\"593\">\n\n### Partially Update a Publisher\n\n<img src=\"https://content.pstmn.io/87307f89-03a6-4d4d-ac2e-282ee69f6bb8/aW1hZ2UucG5n\" width=\"1358\" height=\"609\">\n\n### Delete Publisher\n\n<img src=\"https://content.pstmn.io/5141e769-fa62-4ef8-b142-33b2cb86cad5/aW1hZ2UucG5n\" width=\"1379\" height=\"530\">"
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Get Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/books/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"books",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Books",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/books/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 13:56:09 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1341"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 7,\n        \"title\": \"A New Book\",\n        \"isbn\": \"1234567894\",\n        \"publication_date\": \"2025-01-01\",\n        \"authors\": [\n            {\n                \"id\": 1,\n                \"name\": \"Test User\",\n                \"birth_date\": \"2025-05-01\"\n            },\n            {\n                \"id\": 4,\n                \"name\": \"Test User 3\",\n                \"birth_date\": \"2025-05-02\"\n            }\n        ],\n        \"average_rating\": 0,\n        \"is_poorly_rated\": false,\n        \"favorite_reviewers\": []\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Another Book 1\",\n        \"isbn\": \"12345678941\",\n        \"publication_date\": \"2025-01-01\",\n        \"authors\": [\n            {\n                \"id\": 1,\n                \"name\": \"Test User\",\n                \"birth_date\": \"2025-05-01\"\n            },\n            {\n                \"id\": 4,\n                \"name\": \"Test User 3\",\n                \"birth_date\": \"2025-05-02\"\n            }\n        ],\n        \"average_rating\": 0,\n        \"is_poorly_rated\": false,\n        \"favorite_reviewers\": []\n    },\n    {\n        \"id\": 9,\n        \"title\": \"Another Book 2\",\n        \"isbn\": \"123456789465\",\n        \"publication_date\": \"2025-01-01\",\n        \"authors\": [\n            {\n                \"id\": 3,\n                \"name\": \"Test User 2\",\n                \"birth_date\": \"2025-05-02\"\n            }\n        ],\n        \"average_rating\": 0,\n        \"is_poorly_rated\": false,\n        \"favorite_reviewers\": []\n    },\n    {\n        \"id\": 10,\n        \"title\": \"Another Book 4\",\n        \"isbn\": \"1234567894645\",\n        \"publication_date\": \"2025-01-01\",\n        \"authors\": [\n            {\n                \"id\": 3,\n                \"name\": \"Test User 2\",\n                \"birth_date\": \"2025-05-02\"\n            }\n        ],\n        \"average_rating\": 0,\n        \"is_poorly_rated\": false,\n        \"favorite_reviewers\": []\n    },\n    {\n        \"id\": 11,\n        \"title\": \"Another Book 5\",\n        \"isbn\": \"1234567896452\",\n        \"publication_date\": \"2025-01-01\",\n        \"authors\": [\n            {\n                \"id\": 1,\n                \"name\": \"Test User\",\n                \"birth_date\": \"2025-05-01\"\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Test User 2\",\n                \"birth_date\": \"2025-05-02\"\n            },\n            {\n                \"id\": 4,\n                \"name\": \"Test User 3\",\n                \"birth_date\": \"2025-05-02\"\n            }\n        ],\n        \"average_rating\": 0,\n        \"is_poorly_rated\": false,\n        \"favorite_reviewers\": []\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get a Book by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/books/8",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"books",
+								"8"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a Book by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/books/10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"10"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 13:59:00 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "226"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 10,\n    \"title\": \"Another Book 4\",\n    \"isbn\": \"1234567894645\",\n    \"publication_date\": \"2025-01-01\",\n    \"authors\": [\n        {\n            \"id\": 3,\n            \"name\": \"Test User 2\",\n            \"birth_date\": \"2025-05-02\"\n        }\n    ],\n    \"average_rating\": 0,\n    \"is_poorly_rated\": false,\n    \"favorite_reviewers\": []\n}"
+						},
+						{
+							"name": "Book After Adding Ratings (Including 5 Star)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/books/9",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 17:34:51 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "245"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 9,\n    \"title\": \"Another Book 2\",\n    \"isbn\": \"123456789465\",\n    \"publication_date\": \"2025-01-01\",\n    \"authors\": [\n        {\n            \"id\": 3,\n            \"name\": \"Test User 2\",\n            \"birth_date\": \"2025-05-02\"\n        }\n    ],\n    \"average_rating\": 4,\n    \"is_poorly_rated\": false,\n    \"favorite_reviewers\": [\n        {\n            \"name\": \"Reviewer 2\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Poorly Rated Book",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/books/8",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"8"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 17:37:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "276"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 8,\n    \"title\": \"Another Book 1\",\n    \"isbn\": \"12345678941\",\n    \"publication_date\": \"2025-01-01\",\n    \"authors\": [\n        {\n            \"id\": 1,\n            \"name\": \"Test User\",\n            \"birth_date\": \"2025-05-01\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Test User 3\",\n            \"birth_date\": \"2025-05-02\"\n        }\n    ],\n    \"average_rating\": 1.5,\n    \"is_poorly_rated\": true,\n    \"favorite_reviewers\": []\n}"
+						},
+						{
+							"name": "Get a Book by ID with Reviews Included",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/books/8?include_reviews=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"8"
+									],
+									"query": [
+										{
+											"key": "include_reviews",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 18:29:35 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "616"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 8,\n    \"title\": \"Another Book 1\",\n    \"isbn\": \"12345678941\",\n    \"publication_date\": \"2025-01-01\",\n    \"authors\": [\n        {\n            \"id\": 1,\n            \"name\": \"Test User\",\n            \"birth_date\": \"2025-05-01\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Test User 3\",\n            \"birth_date\": \"2025-05-02\"\n        }\n    ],\n    \"average_rating\": 2.5,\n    \"is_poorly_rated\": false,\n    \"favorite_reviewers\": [],\n    \"reviews\": [\n        {\n            \"id\": 4,\n            \"book\": 8,\n            \"reviewer_name\": \"Reviewer 2\",\n            \"rating\": 2,\n            \"text\": \"Excellent book\"\n        },\n        {\n            \"id\": 5,\n            \"book\": 8,\n            \"reviewer_name\": \"Reviewer 2\",\n            \"rating\": 1,\n            \"text\": \"Excellent book\"\n        },\n        {\n            \"id\": 6,\n            \"book\": 8,\n            \"reviewer_name\": \"Reviewer 3\",\n            \"rating\": 4,\n            \"text\": \"Excellent book\"\n        },\n        {\n            \"id\": 7,\n            \"book\": 8,\n            \"reviewer_name\": \"Reviewer 3\",\n            \"rating\": 3,\n            \"text\": \"Engaging read\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get a Book by ID with Reviews Filtered",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/books/8?include_reviews=true&rating_min=3&rating_max=5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"8"
+									],
+									"query": [
+										{
+											"key": "include_reviews",
+											"value": "true"
+										},
+										{
+											"key": "rating_min",
+											"value": "3"
+										},
+										{
+											"key": "rating_max",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 19:01:23 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "452"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 8,\n    \"title\": \"Another Book 1\",\n    \"isbn\": \"12345678941\",\n    \"publication_date\": \"2025-01-01\",\n    \"authors\": [\n        {\n            \"id\": 1,\n            \"name\": \"Test User\",\n            \"birth_date\": \"2025-05-01\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Test User 3\",\n            \"birth_date\": \"2025-05-02\"\n        }\n    ],\n    \"average_rating\": 2.5,\n    \"is_poorly_rated\": false,\n    \"favorite_reviewers\": [],\n    \"reviews\": [\n        {\n            \"id\": 6,\n            \"book\": 8,\n            \"reviewer_name\": \"Reviewer 3\",\n            \"rating\": 4,\n            \"text\": \"Excellent book\"\n        },\n        {\n            \"id\": 7,\n            \"book\": 8,\n            \"reviewer_name\": \"Reviewer 3\",\n            \"rating\": 3,\n            \"text\": \"Engaging read\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a Book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Another Book 5\",\r\n    \"isbn\": \"1234567896452\",\r\n    \"publication_date\": \"2025-01-01\",\r\n    \"author_ids\": [1,3,4]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/books/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"books",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create a Book with Multiple Authors",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"A New Book\",\r\n    \"isbn\": \"1234567894\",\r\n    \"publication_date\": \"2025-01-01\",\r\n    \"author_ids\": [1,4]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/books/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 13:49:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "272"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 7,\n    \"title\": \"A New Book\",\n    \"isbn\": \"1234567894\",\n    \"publication_date\": \"2025-01-01\",\n    \"authors\": [\n        {\n            \"id\": 1,\n            \"name\": \"Test User\",\n            \"birth_date\": \"2025-05-01\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Test User 3\",\n            \"birth_date\": \"2025-05-02\"\n        }\n    ],\n    \"average_rating\": 0,\n    \"is_poorly_rated\": false,\n    \"favorite_reviewers\": []\n}"
+						},
+						{
+							"name": "Create a Book with a Single Author",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Another Book 2\",\r\n    \"isbn\": \"123456789465\",\r\n    \"publication_date\": \"2025-01-01\",\r\n    \"author_ids\": [3]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/books/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 13:52:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "224"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 9,\n    \"title\": \"Another Book 2\",\n    \"isbn\": \"123456789465\",\n    \"publication_date\": \"2025-01-01\",\n    \"authors\": [\n        {\n            \"id\": 3,\n            \"name\": \"Test User 2\",\n            \"birth_date\": \"2025-05-02\"\n        }\n    ],\n    \"average_rating\": 0,\n    \"is_poorly_rated\": false,\n    \"favorite_reviewers\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a Book",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Another Book 5 - Edited\",\r\n    \"isbn\": \"1234567896453\",\r\n    \"publication_date\": \"2020-01-01\",\r\n    \"author_ids\": [1]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/books/10/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"books",
+								"10",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a Book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Another Book 5 - Edited\",\r\n    \"isbn\": \"1234567896453\",\r\n    \"publication_date\": \"2020-01-01\",\r\n    \"author_ids\": [1]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/books/10/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"10",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 14:06:36 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "233"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 10,\n    \"title\": \"Another Book 5 - Edited\",\n    \"isbn\": \"1234567896453\",\n    \"publication_date\": \"2020-01-01\",\n    \"authors\": [\n        {\n            \"id\": 1,\n            \"name\": \"Test User\",\n            \"birth_date\": \"2025-05-01\"\n        }\n    ],\n    \"average_rating\": 0,\n    \"is_poorly_rated\": false,\n    \"favorite_reviewers\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Partially Update a Book",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Another Book 5 - Partially Edited\",\r\n    \"author_ids\": [1,4]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/books/10/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"books",
+								"10",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Partially Update a Book",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Another Book 5 - Partially Edited\",\r\n    \"author_ids\": [1,4]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/books/10/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"10",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 14:08:20 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "299"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 10,\n    \"title\": \"Another Book 5 - Partially Edited\",\n    \"isbn\": \"1234567896453\",\n    \"publication_date\": \"2020-01-01\",\n    \"authors\": [\n        {\n            \"id\": 1,\n            \"name\": \"Test User\",\n            \"birth_date\": \"2025-05-01\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Test User 3\",\n            \"birth_date\": \"2025-05-02\"\n        }\n    ],\n    \"average_rating\": 0,\n    \"is_poorly_rated\": false,\n    \"favorite_reviewers\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a Book",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/books/10/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"books",
+								"10",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete a Book",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/books/10/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"10",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 14:38:03 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "### Create a Book\n\n<img src=\"https://content.pstmn.io/78d40a7e-8379-4691-a13d-b9c05f4074f4/aW1hZ2UucG5n\" width=\"1377\" height=\"849\">\n\n### Get Books\n\n<img src=\"https://content.pstmn.io/af98b039-5a11-4960-8894-c5a0aa0a6e02/aW1hZ2UucG5n\" width=\"1373\" height=\"868\">\n\n### Get Book by ID\n\n<img src=\"https://content.pstmn.io/a6331f96-593e-4c30-8bdf-1fbab35ea7fa/aW1hZ2UucG5n\" width=\"1372\" height=\"839\">\n\n### Update a Book\n\n<img src=\"https://content.pstmn.io/d3bdbb2c-510d-47fb-85e1-c2d93e9972ae/aW1hZ2UucG5n\" width=\"1379\" height=\"859\">\n\n### Partially Update a Book\n\n<img src=\"https://content.pstmn.io/b4888d8b-5aeb-418b-a8b8-0bc18f47d8fd/aW1hZ2UucG5n\" width=\"1387\" height=\"867\">\n\n### Delete a Book\n\n<img src=\"https://content.pstmn.io/f0fbfdfc-f9ba-4a90-b6bb-927f49352e99/aW1hZ2UucG5n\" width=\"1379\" height=\"517\">\n\n### Reviewer Added to Favourite Reviewers After a 5-Star Review\n\n<img src=\"https://content.pstmn.io/e8b160b4-e04e-461b-b80e-e5cc783667c4/aW1hZ2UucG5n\" width=\"1442\" height=\"852\">\n\n### is_poorly_rated is True When Rating Drops Below 2.0\n\n<img src=\"https://content.pstmn.io/74821222-2f2f-4fe5-a374-5a0f76328741/aW1hZ2UucG5n\" width=\"1389\" height=\"860\">\n\n### Get a Book by ID Including Reviews\n\n<img src=\"https://content.pstmn.io/2cba50b4-11f3-4c08-8c25-b8e9692ceb55/aW1hZ2UucG5n\" width=\"1399\" height=\"862\">\n\n### Get a Book by ID with Reviews Filtered\n\n<img src=\"https://content.pstmn.io/eaffea20-0909-4db3-b247-5fcc114e705a/aW1hZ2UucG5n\" alt=\"\" height=\"853\" width=\"1365\">"
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Get a Review for a Book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/books/9/reviews/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"books",
+								"9",
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Reviews for a Book",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/books/9/reviews/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"9",
+										"reviews",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 18:05:07 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "247"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"book\": 9,\n        \"reviewer_name\": \"Reviewer 1\",\n        \"rating\": 4,\n        \"text\": \"Excellent read\"\n    },\n    {\n        \"id\": 2,\n        \"book\": 9,\n        \"reviewer_name\": \"Reviewer 1\",\n        \"rating\": 3,\n        \"text\": \"Excellent book\"\n    },\n    {\n        \"id\": 3,\n        \"book\": 9,\n        \"reviewer_name\": \"Reviewer 2\",\n        \"rating\": 5,\n        \"text\": \"Excellent book\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get a Review for a Book by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/books/8/reviews/6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"books",
+								"8",
+								"reviews",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a Review for a Book by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/books/8/reviews/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"8",
+										"reviews",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 18:09:25 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"book\": 8,\n    \"reviewer_name\": \"Reviewer 3\",\n    \"rating\": 4,\n    \"text\": \"Excellent book\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add a Review for a Book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "reviewer_name",
+									"value": "Another Reviewer",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "Excellent book",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/books/8/reviews/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"books",
+								"8",
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add a Review",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "reviewer_name",
+											"value": "Reviewer 1",
+											"type": "text"
+										},
+										{
+											"key": "rating",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "text",
+											"value": "Excellent read",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/books/9/reviews/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"9",
+										"reviews",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 15:06:38 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"book\": 9,\n    \"reviewer_name\": \"Reviewer 1\",\n    \"rating\": 4,\n    \"text\": \"Excellent read\"\n}"
+						},
+						{
+							"name": "Validating Rating Value",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "reviewer_name",
+											"value": "Another Reviewer",
+											"type": "text"
+										},
+										{
+											"key": "rating",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "text",
+											"value": "Excellent book",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/books/8/reviews/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"8",
+										"reviews",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 19:04:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"rating\": [\n        \"Rating must be between 1 and 5\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a Review for a Book",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "reviewer_name",
+									"value": "Reviewer 3",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "text",
+									"value": "Updated thoughts on the book",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/books/9/reviews/2/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"books",
+								"9",
+								"reviews",
+								"2",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update a Review for a Book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "reviewer_name",
+											"value": "Reviewer 3",
+											"type": "text"
+										},
+										{
+											"key": "rating",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "text",
+											"value": "Updated thoughts on the book",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/books/9/reviews/2/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"9",
+										"reviews",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 18:11:27 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"book\": 9,\n    \"reviewer_name\": \"Reviewer 3\",\n    \"rating\": 5,\n    \"text\": \"Updated thoughts on the book\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Partially Update a Review for a Book",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "text",
+									"value": "Partially updating my thoughts on the book",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/books/9/reviews/2/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"books",
+								"9",
+								"reviews",
+								"2",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Partially Update a Review for a Book",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "text",
+											"value": "Partially updating my thoughts on the book",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/books/9/reviews/2/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"9",
+										"reviews",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 18:12:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"book\": 9,\n    \"reviewer_name\": \"Reviewer 3\",\n    \"rating\": 5,\n    \"text\": \"Partially updating my thoughts on the book\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a Review for a Book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/books/9/reviews/2/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"books",
+								"9",
+								"reviews",
+								"2",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete a Review for a Book Copy",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/books/9/reviews/2/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"books",
+										"9",
+										"reviews",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 08 May 2025 18:19:08 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.11.1"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "### Add a Review\n\n<img src=\"https://content.pstmn.io/dfcf49c1-66fa-4c67-b869-01436bfc55ab/aW1hZ2UucG5n\" width=\"1372\" height=\"657\">\n\n### Get Reviews for a Book\n\n<img src=\"https://content.pstmn.io/163cbfcc-7eca-454d-a9fe-69f8a65cb2dd/aW1hZ2UucG5n\" width=\"1394\" height=\"875\">\n\n### Get a Review for a Book by ID\n\n<img src=\"https://content.pstmn.io/d8c9ac13-0928-424e-84ff-0deeca21e546/aW1hZ2UucG5n\" width=\"1401\" height=\"636\">\n\n### Update a Review for a Book\n\n<img src=\"https://content.pstmn.io/98e99be7-0857-4d9c-9f95-c67ef9cf7bf8/aW1hZ2UucG5n\" width=\"1362\" height=\"638\">\n\n### Partially Updating a Review for a Book\n\n<img src=\"https://content.pstmn.io/a0d755de-f75d-4600-b9e5-32347c372789/aW1hZ2UucG5n\" width=\"1367\" height=\"643\">\n\n### Deleting a Review for a Book\n\n<img src=\"https://content.pstmn.io/74a938a4-d0e4-4388-a88e-d7d4bcc1f0a4/aW1hZ2UucG5n\" width=\"1377\" height=\"504\">\n\n### Rating Validation\n\n<img src=\"https://content.pstmn.io/0cd870da-9507-4f18-8acd-e26839688516/aW1hZ2UucG5n\" alt=\"\" height=\"618\" width=\"1364\">"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000/",
+			"type": "string"
+		}
+	]
+}
